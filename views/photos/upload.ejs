@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title><%=title %></title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <form
+      action="/upload"
+      method="post"
+      style="width: 400px;margin: 100px auto"
+      enctype="multipart/form-data"
+    >
+      <h1>文件上传</h1>
+      <div class="form-group">
+        <label for="name">文件名称</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          placeholder="请输入名称"
+        />
+      </div>
+      <div class="form-group">
+        <label for="inputfile">文件输入</label>
+        <input type="file" name="inputfile" />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">提交</button>
+      </div>
+    </form>
+  </body>
+</html>
