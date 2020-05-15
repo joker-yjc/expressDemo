@@ -14,26 +14,35 @@
     <form
       action="/upload"
       method="post"
-      style="width: 400px;margin: 100px auto"
+      style="width: 400px; margin: 100px auto;"
       enctype="multipart/form-data"
     >
       <h1>文件上传</h1>
       <div class="form-group">
-        <label for="name">文件名称</label>
+        <label for="inputfile">选择文件：</label>
+        <input type="file" name="inputfile" id="file" />
+      </div>
+      <div class="form-group">
+        <label for="name">文件名称：</label>
         <input
           type="text"
           class="form-control"
           name="name"
+          id="name"
           placeholder="请输入名称"
         />
-      </div>
-      <div class="form-group">
-        <label for="inputfile">文件输入</label>
-        <input type="file" name="inputfile" />
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">提交</button>
       </div>
     </form>
+    <script>
+      var file = document.querySelector('#file'),
+        nameEl = document.querySelector('#name');
+      file.addEventListener('change', function (e) {
+        var name = e.target.files[0].name || '';
+        nameEl.value = name;
+      });
+    </script>
   </body>
 </html>

@@ -11,26 +11,19 @@ router.get("/", function(req, res, next) {
 });
 
 router.post("/", function(req, res) {
-  let pathArr = __dirname.split(path.sep);
-  let newpath = "";
-  pathArr.forEach(function(el, index, arr) {
-    if (index < arr.length - 1) {
-      return (newpath = newpath + el + "/");
-    }
-  });
-
+  let newpath = path.resolve(__dirname,'../public/images')
   var form = new formidable.IncomingForm();
   form.multiples = true;
-  form.uploadDir = path.join(newpath, "public/images");
+  form.uploadDir = newpath;
   form.parse(req, function(err, fields, files) {
     if (err) throw err;
-    console.log(fields, files);
+    // console.log(fields, files);
     if (files.inputfile.name != "" && files.inputfile.size) {
       var oldPath = files.inputfile.path;
       var newPath = path.join(path.dirname(oldPath), files.inputfile.name);
       fs.rename(oldPath, newPath, err => {
         if (err) throw err;
-        // res.send("图片上传成功！");
+        console.log(newPath);
         res.redirect("/photos");
       });
     } else {
@@ -39,9 +32,10 @@ router.post("/", function(req, res) {
         var newPath = path.join(path.dirname(oldPath), el.name);
         fs.rename(oldPath, newPath, err => {
           if (err) throw err;
+          console.log(newPath);
         });
       });
-
+      
       res.redirect("/photos");
     }
   });

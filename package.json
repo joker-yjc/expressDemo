@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
@@ -14,6 +14,7 @@
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0",
     "mysql2": "^1.6.4",
+    "nodemon": "^2.0.4",
     "sequelize": "^4.42.0"
   },
   "description": "express例子，包括文件上传，表单数据处理，数据库连接，数据写入读取",

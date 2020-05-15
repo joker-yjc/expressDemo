@@ -6,10 +6,8 @@ const fs = require("fs"),
 
 /* GET users listing. */
 router.get("/", function(req, res, next) {
-  var photos = [
-    { name: "1.jpg", path: "https://nodejs.org/static/images/logo.svg" }
-  ];
-  var road = path.join(__dirname, "../public/images");
+  var photos = [];
+  var road = path.resolve(__dirname, "../public/images");
   fs.readdir(road, function(err, files) {
     if (err) console.log(err);
     files.forEach(el => {
