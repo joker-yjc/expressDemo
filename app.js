@@ -23,11 +23,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // 提供./public下的静态文件
 app.use(express.static(path.join(__dirname, "public")));
-
-app.use("/", indexRouter);
+app.use((req,res,next)=>{
+  console.log(req.path)
+  next()
+})
+app.use("/express", indexRouter);
 // app.use("/users", usersRouter);
-app.use("/photos", photosRouter);
-app.use("/upload", uploadRouter);
+app.use('/express/photos', photosRouter);
+app.use('/express/upload', uploadRouter);
 // app.use("/article", articleRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
