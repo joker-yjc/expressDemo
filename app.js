@@ -38,6 +38,7 @@ app.use('/', indexRouter);
 // app.use("/users", usersRouter);
 app.use('/photos', photosRouter);
 app.use('/upload', uploadRouter);
+app.use('/uploadImage', require('./routes/testUploadImg'));
 // app.use("/article", articleRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
