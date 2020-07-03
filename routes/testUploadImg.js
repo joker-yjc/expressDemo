@@ -14,28 +14,24 @@ router.post('/', function (req, res) {
     console.log(fields, files);
     if (files.file.name != '' && files.file.size) {
       var oldPath = files.file.path;
-      var newPath = path.join(
-        path.dirname(oldPath),
-        Date.now() + '_' + files.file.name
-      );
+      let newName = Date.now() + '_' + files.file.name;
+      var newPath = path.join(path.dirname(oldPath), newName);
       fs.rename(oldPath, newPath, (err) => {
         if (err) throw err;
         console.log(newPath);
-        res.send({ data: `localhost:3000/images/${files.file.name}` });
+        res.send({ location: `http://localhost:3000/images/${newName}` });
       });
     } else {
       files.file.forEach((el) => {
         var oldPath = el.path;
-        var newPath = path.join(
-          path.dirname(oldPath),
-          Date.now() + '_' + el.name
-        );
+        let newName = Date.now() + '_' + el.name;
+        var newPath = path.join(path.dirname(oldPath), newName);
         fs.rename(oldPath, newPath, (err) => {
           if (err) throw err;
           console.log(newPath);
           // res.status(500);
           // res.end();
-          res.send({ data: `localhost:3000/images/${el.name}` });
+          res.send({ location: `http://localhost:3000/images/${newName}` });
         });
       });
     }
