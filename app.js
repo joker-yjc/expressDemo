@@ -57,5 +57,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-console.log(12)
+console.log(121212)
 module.exports = app;
