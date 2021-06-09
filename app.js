@@ -19,7 +19,9 @@ app.use(logger('dev'));
 // express内置的中间件，只在4.16.x可用，将请求解析成json格式
 app.use(express.json());
 // express内置的中间件，只在4.16.x可用，解析请求的主体
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 
 app.use((req, res, next) => {
@@ -55,5 +57,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+console.log(12)
 module.exports = app;
